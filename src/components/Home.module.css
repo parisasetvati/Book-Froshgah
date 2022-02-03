@@ -1,0 +1,61 @@
+.container {
+  background-color: beige;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+    flex-direction: row;
+    /* justify-content:s; */
+    /* align-items: center; */
+    padding-top: 40px;
+    margin-top:-20px;
+}
+.addproduct {
+  background-color: beige;
+  width: 50%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+   justify-content:space-between; 
+  align-items:center ; 
+}
+.showproduct{
+    width: 50%;
+    
+}
+.input,
+.select {
+  width: 250px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #ffe4e6;
+}
+.input:focus,
+select:focus {
+  outline: none;
+  border: 1px solid #fda4af;
+}
+
+.btn {
+  width: 130px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #ffe4e6;
+  border: 1px solid #fda4af;
+  transition: 0.5s;
+}
+.btn:hover {
+  /* border:1px solid #ffe4e6 ; */
+  background-color: #fd96a2;
+  color: #fff;
+}
+label {
+  font-weight: 600;
+  font-size: 12pt;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  
+}
+.product{
+    font-weight:300;
+    display: inline-block;
+    padding:5px 20px 5px 10px;
+}
