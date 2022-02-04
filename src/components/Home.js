@@ -70,6 +70,7 @@ const AddToSelectHandler=()=>{
         <label> Add Category :</label>
         <input className={styles.input} type="text"   onChange={addCategoryHandler}  ></input>
         <button className={styles.btn} onClick={AddToSelectHandler}>AddCategory</button>
+        
         </div>
         <div className={styles.showproduct}>
         {productlist.map((product)=>{
