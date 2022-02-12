@@ -22,9 +22,13 @@ const changeSelectHandler=(e)=>{
   
 }
 const addHandler=()=>{
-
+if(!bookName){
+  toast ('please inter book name')
+  return
+}
     setProductlist([...productlist,{title:bookName,category:categoryName,id:productlist.length+1}]  ) 
-
+    setBookName("");
+ 
     console.log(productlist);
     
    }
@@ -35,8 +39,9 @@ const addHandler=()=>{
 
 const AddToSelectHandler=()=>{
   setAddCategory([...addcategory,categoris]);
-  
-  alert("New category added");
+  setCategoris("");
+
+  // alert("New category added");
 }
 
     return ( 
@@ -68,7 +73,7 @@ const AddToSelectHandler=()=>{
      
         <button className={styles.btn} onClick={addHandler}>AddBook</button>
         <label> Add Category :</label>
-        <input className={styles.input} type="text"   onChange={addCategoryHandler}  ></input>
+        <input className={styles.input} type="text"   onChange={addCategoryHandler} value={categoris} ></input>
         <button className={styles.btn} onClick={AddToSelectHandler}>AddCategory</button>
         
         </div>
