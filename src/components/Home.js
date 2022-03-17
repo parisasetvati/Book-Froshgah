@@ -1,98 +1,60 @@
-import React, { useState} from 'react';
-import styles from './Home.module.css';
-// import Content from "./Content/Content";
-import Navbar from './Navbar/Navbar'
+import React, { useState } from "react";
+import AddCategory from "./AddCategory/AddCategory";
+import BookForm from "./BookForm/BookForm";
+import BookList from "./BookList/BookList";
+import styles from "./Home.module.css";
+import Navbar from "./Navbar/Navbar";
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+
 const Home = () => {
-
-    const [bookName,setBookName]=useState("");
-    const[categoryName,setCategoryName]=useState("");
-    const[productlist,setProductlist]=useState([]);
-   const[categoris,setCategoris]=useState("");
-   const[addcategory,setAddCategory]=useState([]);
+  const [productlist, setProductlist] = useState([]);
+  const [addcategory, setAddCategory] = useState([]);
+  const addHandler = (bookName, categoryName) => {
+  if(!bookName)  {
+    NotificationManager.warning('Warning message', 'Please input BookName', 3000)
+  }
+   else{
+    console.log(bookName, categoryName);
+    setProductlist([
+      ...productlist,
+      { title: bookName, category: categoryName, id: productlist.length + 1 },
+    ]);
+  };
+  }
   
-
-const changeHandler=(e)=>{
-    
-  setBookName(e.target.value);
+   
  
 
-}
-const changeSelectHandler=(e)=>{
-    setCategoryName(e.target.value);
+  const AddToCategoryHandler = (categoris) => {
+    if(!categoris)  {
+      NotificationManager.error('Error message', 'Please enter New Category!', 5000)
+      // NotificationManager.warning('Warning message', 'Please enter New Category', 3000)
+    }
+    else{
+    setAddCategory([...addcategory, categoris]);
+    console.log(categoris);
+    NotificationManager.success(' Add New Category', 'Sucsses');
+    }
+  };
   
-}
-const addHandler=()=>{
-if(!bookName){
-  toast ('please inter book name')
-  return
-}
-    setProductlist([...productlist,{title:bookName,category:categoryName,id:productlist.length+1}]  ) 
-    setBookName("");
- 
-    console.log(productlist);
-    
-   }
-  const addCategoryHandler=(e)=>{
-    setCategoris(e.target.value);
-
-   }
-
-const AddToSelectHandler=()=>{
-  setAddCategory([...addcategory,categoris]);
-  setCategoris("");
-
-  // alert("New category added");
-}
-
-    return ( 
-      <div>
-         <Navbar totalItem={productlist.filter((p)=>p.id>0).length}/>
+  return (
+    <div>
+      <Navbar totalItem={productlist.filter((p) => p.id > 0).length} />
       <div className={styles.container}>
-        
-        <div className={styles.addproduct}>
-            
-            <label> Select Book Name :</label>
-        <input className={styles.input} type="text"  value={bookName} onChange={changeHandler}  >
-        </input>
-        
-        <label> Select Book Category :</label>
-
-        <select className={styles.select}  onChange={changeSelectHandler}>
-            <option value="ravanshenasi">ravanshenasi</option>
-            <option value="tarikhi">tarikhi</option>
-            <option value="elmi">elmi</option>
-          
-            {addcategory.map((p)=>{
-      return <option>{p}</option>
-     })}
-           
-        
-           
-    
-        </select>
+      <div className={styles.addProduct}>
+      <BookForm addHandler={addHandler} addcategory={addcategory} />
+     <AddCategory categoryHandler={AddToCategoryHandler} />
+      </div>
+     <div  className={styles.productlist}>
+     <BookList productlist={productlist} />
+     </div>
+      </div>
      
-        <button className={styles.btn} onClick={addHandler}>AddBook</button>
-        <label> Add Category :</label>
-        <input className={styles.input} type="text"   onChange={addCategoryHandler} value={categoris} ></input>
-        <button className={styles.btn} onClick={AddToSelectHandler}>AddCategory</button>
-        
-        </div>
-        <div className={styles.showproduct}>
-        {productlist.map((product)=>{
-        return <div>
-         <label> BookName:</label><p className={styles.product}> {product.title} </p> 
-         <label> Category:</label><p className={styles.product}>{product.category}</p> 
-         <label> Id:</label>  <p className={styles.product}>{product.id}</p> 
-            </div>}
-        )}
-      </div> 
-    </div>
-    </div>
-     );
-}
-
-         
      
-       
- 
+      <NotificationContainer/>
+    </div>
+  );
+};
+
 export default Home;

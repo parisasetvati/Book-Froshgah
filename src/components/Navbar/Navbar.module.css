@@ -1,27 +1,36 @@
+@media only screen and (max-width: 400px) {
+    .header{
+        width: 100% !important;
+        padding:0 auto !important;
+    }
+}
 .header{
     width: 100%;
-    background-color: antiquewhite;
+    background-color: #064e3b;
     height: 20vh;
     position: relative;
-    top:-20px;
+    /* top:-20px; */
 display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: center;
+margin-bottom: 30px;
 
 }
 .header h2{
     padding:15px;
     margin: 0;
+    color:#fff
     
 }
 span{
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color:rgb(241, 241, 239);
+    background-color:#ecfdf5;
 display: flex;
     align-items: center;
     justify-content: center; 
     font-weight: bold;
+    color: #064e3b
 }
