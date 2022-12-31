@@ -20,13 +20,23 @@ const AddCategory = (props) => {
         <div className={styles.addCategory} >
 
         
-        <div className={styles.container}>
+        <form className={styles.container}>
             <div className={styles.inputs}>
         <label> Add New Category :</label>
         <input className={styles.input} type="text"   onChange={addCategoryHandler} value={categoris} ></input>
         </div>
+        <div className={styles.inputs}>
+        <label> Description :</label>
+        <textarea className={styles.input} type="text"   onChange={addCategoryHandler} value={categoris} ></textarea>
+        </div>
+        <div>
+        <button className={styles.btn} >Cancle</button> 
+
         <button className={styles.btn} onClick={AddToSelectHandler}>AddCategory</button> 
         </div>
+       
+        </form>
+
         </div>
      );
 }
