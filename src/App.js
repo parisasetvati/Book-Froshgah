@@ -1,5 +1,5 @@
 import react from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import './App.css';
@@ -28,12 +28,12 @@ import Home from './components/Home';
 //   </ToastProvider>
 // );
 const App=()=> {
-  const notify = () => toast("Wow so easy!");
+
   return (
-    <div>
+    <div >
     <Home/>
     
-        <button onClick={notify}>Notify!</button>
+        
         <ToastContainer />
        
       </div>
