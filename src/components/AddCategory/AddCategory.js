@@ -29,11 +29,11 @@ const AddCategory = ({categoryHandler}) => {
         
         <form className="flex  flex-col   text-xs w-full my-5 text-slate-200">
             <div className="flex flex-row  mb-5 w-full ">
-        <label className='text-xs text-slate-200 '> Category :</label>
-        <input className="w-2/5 h-8 rounded-md ml-4 bg-transparent focus:outline focus:outline-none  focus:outline-offset-0 focus:outline-transparent focus:border focus:border-slate-200 " type="text"   onChange={addCategoryHandler} value={categoris.category} name="category" ></input>
+        <label className='text-xs w-24  text-slate-200 '> Category :</label>
+        <input className="w-2/5 h-8 rounded-md  bg-transparent focus:outline focus:outline-none  focus:outline-offset-0 focus:outline-transparent focus:border focus:border-slate-200 " type="text"   onChange={addCategoryHandler} value={categoris.category} name="category" ></input>
         </div>
         <div className="flex flex-row mb-5  w-full">
-        <label className=' text-xs text-slate-200'> Description :</label>
+        <label className=' text-xs w-24 text-slate-200'> Description :</label>
         <textarea className="w-3/5 h-15 rounded-md  bg-transparent  border-slate-500" type="text"   onChange={addCategoryHandler} value={categoris.description} name="description"></textarea>
         </div>
         <div className='mt-3 font-bold flex justify-center items-center'>

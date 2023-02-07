@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddCategory from "./AddCategory/AddCategory";
@@ -6,6 +6,8 @@ import BookForm from "./BookForm/BookForm";
 import BookList from "./BookList/BookList";
 import styles from "./Home.module.css";
 import Navbar from "./Navbar/Navbar";
+import Search from "./Search/Search.js";
+import Sort from "./Sort/Sort";
 
 
 
@@ -13,6 +15,10 @@ import Navbar from "./Navbar/Navbar";
 const Home = () => {
   const [productlist, setProductlist] = useState([]);
   const [addcategory, setAddCategory] = useState([]);
+  const[filterproduct, setFilterProduct]=useState([]);
+  const[searchValue,setSearchValue]=useState("");
+  const[sort,setSort]=useState("latest");
+ 
   const addproduct = (product) => {
   // console.log(product);
   if(! product.productName && !product.quantity && ! product.categoryId)  {
@@ -51,11 +57,8 @@ const Home = () => {
       className:'toast-message'
  });
    };
-  }
-  
-   
- 
-  
+  };
+
   const AddToCategoryHandler = (categoris) => {
     if(!categoris.category && !categoris.description)  {
       
@@ -90,7 +93,44 @@ const Home = () => {
     
     }
   };
-  
+  const searchHandler=(e)=>{
+setSearchValue(e.target.value.trim().toLowerCase());
+  }
+  const sortHandler=(e)=>{
+    setSort(e.target.value);
+      }
+  const filterSearchTitle=(array)=>{
+    console.log(array);
+    return array.filter((p)=> p.productName.toLowerCase().includes(searchValue))};
+
+ const filterSort=(array)=>{
+ 
+  let sortProducts=[...array];
+  return sortProducts.sort((a,b)=>{
+    if(sort==="latest"){
+      return new Date(a.createdArt)>new Date(b.createdArt)?-1 :1}
+      else if  (sort==="earlist"){
+      return new Date(a.createdArt)>new Date(b.createdArt)? 1 :-1}
+    })
+  }
+  useEffect(()=>{
+    let result=productlist;
+    result=filterSearchTitle(result);
+    result=filterSort(result);
+    setFilterProduct(result);
+  },[productlist,searchValue,sort]);
+  useEffect(()=>{
+    const savedProducts=JSON.parse(localStorage.getItem("products")) || [];
+    const savedCategories=JSON.parse(localStorage.getItem("categories")) || [];
+    setProductlist(savedProducts);
+    setAddCategory(savedCategories);
+  },[]);
+  useEffect(()=>{  if (productlist.length){
+    localStorage.setItem("products",JSON.stringify(productlist))
+  }},[productlist]);
+  useEffect(()=>{  if (addcategory.length){
+    localStorage.setItem("categories",JSON.stringify(addcategory))
+  }},[addcategory]);
   return (
     <div>
       <Navbar totalItem={productlist.filter((p) => p.id > 0).length} />
@@ -98,9 +138,9 @@ const Home = () => {
      
       <AddCategory categoryHandler={AddToCategoryHandler} />
       <BookForm addproduct={addproduct} addcategory={addcategory} />
-     
-     
-     <BookList productlist={productlist} categories={addcategory}  setProductlist={setProductlist}/>
+     <Search  searchValue={searchValue} onSearch={searchHandler} />
+   <Sort sort={sort} onSort={sortHandler}/>
+     <BookList productlist={filterproduct} categories={addcategory}  setProductlist={setProductlist}/>
      
     
      
