@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AddCategory from "./AddCategory/AddCategory";
 import BookForm from "./BookForm/BookForm";
 import BookList from "./BookList/BookList";
+import Filtercategory from "./Filtercategory/Filtercategory";
 import styles from "./Home.module.css";
 import Navbar from "./Navbar/Navbar";
 import Search from "./Search/Search.js";
@@ -18,7 +19,7 @@ const Home = () => {
   const[filterproduct, setFilterProduct]=useState([]);
   const[searchValue,setSearchValue]=useState("");
   const[sort,setSort]=useState("latest");
- 
+ const [filtercategory, setFilterCategory]=useState("");
   const addproduct = (product) => {
   // console.log(product);
   if(! product.productName && !product.quantity && ! product.categoryId)  {
@@ -99,6 +100,9 @@ setSearchValue(e.target.value.trim().toLowerCase());
   const sortHandler=(e)=>{
     setSort(e.target.value);
       }
+      const filterHandler=(e)=>{
+        setFilterCategory(e.target.value);
+      }
   const filterSearchTitle=(array)=>{
     console.log(array);
     return array.filter((p)=> p.productName.toLowerCase().includes(searchValue))};
@@ -112,13 +116,21 @@ setSearchValue(e.target.value.trim().toLowerCase());
       else if  (sort==="earlist"){
       return new Date(a.createdArt)>new Date(b.createdArt)? 1 :-1}
     })
+  };
+  const filterCategoryItem=(array)=>{
+    if (filtercategory===""){return array}
+
+  else{
+    return array.filter((p)=>p.categoryId===filtercategory)
+  }  
   }
   useEffect(()=>{
     let result=productlist;
     result=filterSearchTitle(result);
     result=filterSort(result);
+    result=filterCategoryItem(result);
     setFilterProduct(result);
-  },[productlist,searchValue,sort]);
+  },[productlist,searchValue,sort,filtercategory]);
   useEffect(()=>{
     const savedProducts=JSON.parse(localStorage.getItem("products")) || [];
     const savedCategories=JSON.parse(localStorage.getItem("categories")) || [];
@@ -140,6 +152,7 @@ setSearchValue(e.target.value.trim().toLowerCase());
       <BookForm addproduct={addproduct} addcategory={addcategory} />
      <Search  searchValue={searchValue} onSearch={searchHandler} />
    <Sort sort={sort} onSort={sortHandler}/>
+   <Filtercategory filtercategory={filtercategory} onfilter={filterHandler} addcategory={addcategory}/>
      <BookList productlist={filterproduct} categories={addcategory}  setProductlist={setProductlist}/>
      
     
