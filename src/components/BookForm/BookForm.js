@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import styles from "./BookForm.module.css"
-const BookForm = ({addproduct,addcategory}) => {
-    const [product,setProduct]=useState({productName:"",categoryId:"",quantity:0});
+const BookForm = ({addproduct,addcategory,edit}) => {
+    const [product,setProduct]=useState( edit ? {productName:edit.productName,categoryId:edit.categoryId,quantity:edit.quantity}: {productName:"",categoryId:"",quantity:0});
     // const[categoryName,setCategoryName]=useState("");
     const changeHandler=({target})=>{
     

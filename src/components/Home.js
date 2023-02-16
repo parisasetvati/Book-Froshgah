@@ -94,6 +94,23 @@ const Home = () => {
     
     }
   };
+const onUpdate=(id,product)=>{
+
+  
+   // console.log(id, newValue);
+    const index = productlist.findIndex((product) => product.id === id);
+    const selectProduct = { ...productlist[index] };
+    selectProduct.productName = product.productName;
+    selectProduct.quantity=product.quantity;
+    selectProduct.categoryId=product.categoryId;
+    selectProduct.creatEdit=new Date().toISOString();
+    //console.log(selectTodo.name);
+    const updateProduct = [...productlist];
+    updateProduct[index] = selectProduct;
+    setProductlist(updateProduct);
+
+
+};
   const searchHandler=(e)=>{
 setSearchValue(e.target.value.trim().toLowerCase());
   }
@@ -153,7 +170,7 @@ setSearchValue(e.target.value.trim().toLowerCase());
      <Search  searchValue={searchValue} onSearch={searchHandler} />
    <Sort sort={sort} onSort={sortHandler}/>
    <Filtercategory filtercategory={filtercategory} onfilter={filterHandler} addcategory={addcategory}/>
-     <BookList productlist={filterproduct} categories={addcategory}  setProductlist={setProductlist}/>
+     <BookList productlist={filterproduct} categories={addcategory} onUpdate={onUpdate}  setProductlist={setProductlist} addcategory={addcategory}/>
      
     
      
