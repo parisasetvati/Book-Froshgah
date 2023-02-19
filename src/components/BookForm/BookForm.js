@@ -18,7 +18,7 @@ const BookForm = ({addproduct,addcategory,edit}) => {
     }
     return (  
         <section className="w-full">
-            <div  className="bg-slate-800 w-2/5 h-1/5 flex  items-center rounded-md mx-auto mt-10"  >
+            <div  className=" max-[900px]:w-4/5  max-[900px]:mx-auto lg:w-4/5 bg-slate-800 w-2/5 h-1/5 flex  items-center rounded-md mx-auto mt-10 mb-20"  >
 
             <form className="flex  flex-col   text-xs w-full my-5 text-slate-200">
                 <div className="flex flex-row  mb-5 w-full ">
@@ -43,7 +43,7 @@ return <option key={p.id} value={p.id} >{p.category}</option>
     </select>
         </div>
         <div className='w-full flex justify-center mt-4 mr-8 '>
-            <button className="   w-40 h-8 bg-slate-600 text-slate-200 rounded-md" onClick={submitHanler}>Add Product</button></div>
+            <button className="   w-40 h-8 bg-slate-600 text-slate-200 rounded-md" onClick={submitHanler}> {edit ? "Edit Product" :"Add Product"}</button></div>
             </form>
             </div>
         </section>

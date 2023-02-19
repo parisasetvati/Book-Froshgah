@@ -161,22 +161,30 @@ setSearchValue(e.target.value.trim().toLowerCase());
     localStorage.setItem("categories",JSON.stringify(addcategory))
   }},[addcategory]);
   return (
-    <div>
+    <section>
       <Navbar totalItem={productlist.filter((p) => p.id > 0).length} />
       
-     
+     <div className="lg:flex lg:flex-row lg:item-center ">
+      <div className="lg:w-full">
       <AddCategory categoryHandler={AddToCategoryHandler} />
       <BookForm addproduct={addproduct} addcategory={addcategory} />
-     <Search  searchValue={searchValue} onSearch={searchHandler} />
+      </div>
+      <div className="lg:w-full">
+      <Search  searchValue={searchValue} onSearch={searchHandler} />
    <Sort sort={sort} onSort={sortHandler}/>
    <Filtercategory filtercategory={filtercategory} onfilter={filterHandler} addcategory={addcategory}/>
      <BookList productlist={filterproduct} categories={addcategory} onUpdate={onUpdate}  setProductlist={setProductlist} addcategory={addcategory}/>
      
+      </div>
+      </div>
+     </section>
+     
+    
     
      
      
       
-    </div>
+  
   );
 };
 

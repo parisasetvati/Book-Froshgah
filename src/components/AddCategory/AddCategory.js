@@ -24,7 +24,7 @@ const AddCategory = ({categoryHandler}) => {
     return ( 
     <section className="w-full ">
         
-        <div className={`max-[900px]:w-4/5  max-[900px]:mx-auto bg-slate-800 w-2/5 h-1/5 flex justify-center items-center rounded-md mx-auto mt-10  p-6  ${isShow ? "" : "hidden"}  `}  >
+        <div className={`max-[900px]:w-4/5  max-[900px]:mx-auto lg:w-4/5 bg-slate-800 w-2/5 h-1/5 flex justify-center items-center rounded-md mx-auto mt-10  p-6  ${isShow ? "" : "hidden"}  `}  >
 
         
         <form className="flex  flex-col   text-xs w-full my-5 text-slate-200">

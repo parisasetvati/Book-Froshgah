@@ -34,19 +34,30 @@ setProductlist(filterProduct);
    return <div  className="flex flex-col  h-full justify-center items-center"  >
     {productlist.map((products)=>{
     // console.log(products);
-     return <div  key={products.id} className="bg-slate-800 w-2/5  h-94 py-4 px-6 text-sm font-bold  flex  items-center justify-between  rounded-md  text-slate-200 mx-auto mt-10">
-<div>
-      <span className="text-lg w-1/2"> {products.productName} </span> 
-      </div>
+     return <div  key={products.id} className="bg-slate-800 w-5/6 h-94 py-4 px-6 text-sm font-bold  flex  items-center justify-between  rounded-md  text-slate-200  mx-20 my-5">
+
+     
+      
       <div className="flex items-center">
-      <span className="mx-4  w-14  h-6 bg-slate-300 border-2 border-slate-700 rounded-md px-5 py-2  flex justify-center items-center text-slate-500 text-sm ">{findCategory(products.categoryId)}</span> 
+      <span className="text-lg mx-6  w-20 "> {products.productName} </span> 
+      <span className="mx-4  w-28  h-6 bg-slate-300 border-2 border-slate-700 rounded-md px-5 py-2  flex justify-center items-center text-slate-500 text-sm ">{findCategory(products.categoryId)}</span> 
  
      <span className=" mx-4 w-6 h-6 bg-slate-300 rounded-full ml-3  flex justify-center items-center text-slate-500 text-sm ">{products.quantity}</span> 
  
-     <span className="mx-4  w-14 h-6 bg-slate-300 border-2 border-slate-700 r     ounded-md px-8 py-3 flex justify-center items-center text-slate-500 text-sm ">{new Date(products.createdArt).toLocaleDateString("fa-IR")}</span> 
-     <span className={`${products.creatEdit ? "": "hidden"} mx-4  w-14 h-6 bg-slate-300 border-2 border-slate-700 r     ounded-md px-8 py-3 flex justify-center items-center text-slate-500 text-sm "`}>{ new Date(products.creatEdit).toLocaleString("fa-IR")}</span> 
+   
      <button className="mx-4 flex justify-center items-center border-red-700 border-2 w-8 h-8 bg-transparent text-slate-200 rounded-md text-xs" onClick={()=>deleteProduct(products.id)}><BiTrash className=" text-md font-bold" /></button>
      <button className="mx-4 flex justify-center items-center border-slate-400 border-2 w-8 h-8 bg-transparent text-slate-200 rounded-md text-xs"onClick={()=>setEdit(products)} ><BiMessageSquareEdit className=" text-lg font-bold" /></button>
+     <div>
+      <div className="flex  flex-col item-center justify-center ">
+        <label className="text-sm ">Date Create:</label>
+        <span className="mx-1  w-20 h-4 bg-slate-300 border-2 border-slate-700  rounded-md px-8 py-3 flex justify-center items-center text-slate-500 text-sm ">{new Date(products.createdArt).toLocaleDateString("fa-IR")}</span> 
+        </div>
+     <div className="flex flex-col item-center justify-center ">
+     <label className={`${products.creatEdit ? "": "hidden"} text-sm`}>Last Edit:</label>
+     <span className={`${products.creatEdit ? "": "hidden"} mx-1  w-20 h-10 bg-slate-300 border-2 border-slate-700      rounded-md px-8 py-3 flex justify-center items-center text-slate-500 text-sm "`}>{ new Date(products.creatEdit).toLocaleString("fa-IR")}</span> 
+      </div>
+    
+      </div>
       </div>
          </div>})
          };
