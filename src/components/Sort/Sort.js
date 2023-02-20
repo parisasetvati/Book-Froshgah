@@ -1,14 +1,18 @@
 const Sort = ({sort,onSort}) => {
     return ( 
-        <div>
-            <label>Sort</label>
-            <select  className='rounded-md mt-2 ml-5 w-1/3 text-slate-800 text-xs h-2/4' onChange={onSort}  value={sort} >
-<option >latest</option>
-<option>earlist</option>
+        <section lassName="mx-8 my-8">
+
+        
+        <div className="w-full flex justify-between items-center px-8 my-2  ">
+            <label className="text-slate-500 text-lg">Sort</label>
+            <select  className="bg-transparent border border-slate-500 rounded-lg p-2  w-2/6 text-slate-300" onChange={onSort}  value={sort} >
+<option className="text-slate-800 " >latest</option>
+<option className="text-slate-800 ">earlist</option>
   
    
     </select>
         </div>
+        </section>
 
      );
 }

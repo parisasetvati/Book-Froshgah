@@ -5,13 +5,13 @@ const Search = ({searchValue,onSearch }) => {
 
 
     return(
-<section>
-    <div>
-        <label>Search</label>
-        <input type="text" value={searchValue} onChange={onSearch}></input>
+
+    <div className="w-full flex justify-between items-center px-8 mt-12 ">
+        <label className="text-slate-500 text-lg">Search</label>
+        <input className="bg-transparent border border-slate-500 rounded-lg p-2" type="text" value={searchValue} onChange={onSearch}></input>
     </div>
    
-</section>
+
     );
 };
 export default Search;

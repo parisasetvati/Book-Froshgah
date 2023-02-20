@@ -22,9 +22,11 @@ const AddCategory = ({categoryHandler}) => {
        }
     
     return ( 
-    <section className="w-full ">
-        
-        <div className={`max-[900px]:w-4/5  max-[900px]:mx-auto lg:w-4/5 bg-slate-800 w-2/5 h-1/5 flex justify-center items-center rounded-md mx-auto mt-10  p-6  ${isShow ? "" : "hidden"}  `}  >
+    <section className=" mx-6 mt-6" >
+       <div className={`w-full  ${isShow ? "" : "hidden"}`}>
+<h1 className= "text-slate-200 text-lg font-bold border-b my-8 py-4 mx-4 border-slate-400">Add New Category</h1>
+ 
+        <div className="max-[900px]:w-4/5  max-[900px]:mx-auto lg:w-4/5 bg-slate-800 w-2/5 h-1/5 flex justify-center items-center rounded-md mx-auto mt-10  p-6 "  >
 
         
         <form className="flex  flex-col   text-xs w-full my-5 text-slate-200">
@@ -45,7 +47,9 @@ const AddCategory = ({categoryHandler}) => {
         </form>
 
         </div>
-         <button className={`${isShow && "hidden"} g-transparent  text-slate-200 text-xs font-bold ml-72 mt-5  hover:text-slate-400 duration-150`} onClick={()=>{setIsShow(!isShow)}}>Add New Category</button>
+</div>
+         <button className={`${isShow && "hidden"} bg-transparent w-full border-slate-400 border-b text-slate-200 text-lg font-bold mt-10  pb-2 flex justify-start hover:text-slate-400 duration-150`} onClick={()=>{setIsShow(!isShow)}}>Add New Category</button>
+         
          </section>
      );
 }

@@ -1,12 +1,12 @@
 const Filtercategory = ({addcategory, filtercategory,onfilter}) => {
     return (
-        <div>
-            <label>filter</label>
-            <select  className='rounded-md mt-2 ml-5 w-1/3 text-slate-800 text-xs h-2/4' onChange={onfilter}  value={filtercategory} >
-<option value="">All</option>
+        <div className="w-full flex justify-between items-center px-8 my-4 ">
+            <label className="text-slate-500 text-lg">Filter</label>
+            <select  className="bg-transparent border border-slate-500 rounded-lg p-2 w-2/6 text-slate-300" onChange={onfilter}  value={filtercategory} >
+<option className="text-slate-800" value="">All</option>
   
     {addcategory.map((p)=>{
-return <option key={p.id} value={p.id} >{p.category}</option>
+return <option key={p.id} value={p.id}  className="text-slate-800 ">{p.category}</option>
     })}
     </select>
         </div>
