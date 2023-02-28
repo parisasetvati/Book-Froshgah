@@ -1,7 +1,6 @@
 import styles from "./BookList.module.css"
 import { BiTrash,BiMessageSquareEdit} from "react-icons/bi";
 import { useState } from "react";
-import ProductEdit from "../ProductEdit/ProductEdit";
 import BookForm from "../BookForm/BookForm";
 import 'react-tooltip/dist/react-tooltip.css';
 import {Tooltip } from 'react-tooltip'

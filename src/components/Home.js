@@ -162,26 +162,27 @@ setSearchValue(e.target.value.trim().toLowerCase());
   }},[addcategory]);
   return (
     <section>
-      <Navbar totalItem={productlist.filter((p) => p.id > 0).length} />
-      
-     <div className="lg:flex lg:flex-row lg:item-center ">
-      <div className="lg:w-full">
+      <Navbar totalItem={productlist.filter((p) => p.id > 0).length} /> 
+      <div className="lg:flex lg:flex-row lg:item-center ">
+            
+ <div className="lg:w-full">
       <AddCategory categoryHandler={AddToCategoryHandler} />
       <BookForm addproduct={addproduct} addcategory={addcategory} />
-      </div>
+      </div> 
       <div className="lg:w-full">
       <section className="mx-6 my-8">
         
 
-<h1 className=" text-slate-200 text-lg font-bold border-b my-4 mx-10 py-4 mx-6 border-slate-400">Filter Product</h1>
+<h1 className=" text-slate-200 text-lg font-bold border-b my-4 mx-10 py-4  border-slate-400">Filter Product</h1>
       <Search  searchValue={searchValue} onSearch={searchHandler} />
    <Sort sort={sort} onSort={sortHandler}/>
-   <Filtercategory filtercategory={filtercategory} onfilter={filterHandler} addcategory={addcategory}/>
-   </section>
-     <BookList productlist={filterproduct} categories={addcategory} onUpdate={onUpdate}  setProductlist={setProductlist} addcategory={addcategory}/>
-     
+   <Filtercategory filtercategory={filtercategory} onfilter={filterHandler} addcategory={addcategory}/> 
+    </section>
+      <BookList productlist={filterproduct} categories={addcategory} onUpdate={onUpdate}  setProductlist={setProductlist} addcategory={addcategory}/>
+      
       </div>
-      </div>
+      </div> 
+      
      </section>
      
     
